@@ -1,5 +1,6 @@
-import Compare from './../compare.js';
 import Swap from './../swap.js';
+import Compare from './../compare.js';
+
 const swap = Swap.swap;
 
 export default class SelectionSort {
@@ -9,6 +10,7 @@ export default class SelectionSort {
 
     for (let i = 0; i < length - 1; i++) {
       idxMinValue = i;
+
       for (let j = i; j < length; j++) {
         if (compareFn(array[idxMinValue], array[j]) === Compare.BIGGER_THAN) {
           idxMinValue = j;

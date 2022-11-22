@@ -1,8 +1,15 @@
 import readline from 'readline';
 import BubbleSort from './EDAComJs/ordenacaoEBusca/bubbleSort/bubbleSort.js';
+import InsertionSort from './EDAComJs/ordenacaoEBusca/insertionSort/insertionSort.js';
 import SelectionSort from './EDAComJs/ordenacaoEBusca/selectionSort/selectionSort.js';
+import { isInOrder } from './isInOrder.js';
 
-const defaultArray = [5, 4, 3, 2, 1, 10, 9];
+const defaultArray = [];
+
+for (let i = 0; i < 100000; i++) {
+  const randomValue = Math.floor(Math.random() * 1000);
+  defaultArray.push(randomValue);
+}
 
 const chapthers = [
   {
@@ -20,11 +27,19 @@ const chapthers = [
           return SelectionSort.selectionSort(array);
         },
       },
+      {
+        title: 'InsertionSort',
+        fun: (array) => {
+          return InsertionSort.insertionSort(array);
+        },
+      },
     ],
   },
 ];
 
-menu(chapthers);
+while (await menu(chapthers)) {
+  console.log('\n---------------------');
+}
 
 async function getAnswer(question) {
   const reader = readline.createInterface({
@@ -41,17 +56,26 @@ async function getAnswer(question) {
 }
 
 function handleOption(array, option) {
-  if (option > array.length) {
+  if (option === 0) {
+    return false;
+  }
+
+  if (option > array.length || option < 0) {
     console.log('Opção inválida, tenteNovamente');
+    return true;
   }
 
   const choice = array[option - 1];
   if (choice?.fun) {
-    console.log(choice.fun(defaultArray));
+    console.time('toOrder');
+    const orderedArray = choice.fun([...defaultArray]);
+    console.timeEnd('toOrder');
+    console.log(isInOrder(orderedArray) ? 'Ordered' : "Isn't Ordered");
     return;
   }
 
   menu(choice.subChapther);
+  return true;
 }
 
 async function menu(array) {
@@ -59,6 +83,6 @@ async function menu(array) {
     console.log(`${i + 1} - ${array[i].title}`);
   }
 
-  const option = await getAnswer('Escolha uma opção: ');
-  handleOption(array, option);
+  const option = await getAnswer('\nEscolha uma opção: ');
+  return handleOption(array, option);
 }
