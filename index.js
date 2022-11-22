@@ -1,5 +1,6 @@
 import readline from 'readline';
 import BubbleSort from './EDAComJs/ordenacaoEBusca/bubbleSort/bubbleSort.js';
+import SelectionSort from './EDAComJs/ordenacaoEBusca/selectionSort/selectionSort.js';
 
 const defaultArray = [5, 4, 3, 2, 1, 10, 9];
 
@@ -11,6 +12,12 @@ const chapthers = [
         title: 'BubbleSort',
         fun: (array) => {
           return BubbleSort.bubbleSort(array);
+        },
+      },
+      {
+        title: 'SelectionSort',
+        fun: (array) => {
+          return SelectionSort.selectionSort(array);
         },
       },
     ],
