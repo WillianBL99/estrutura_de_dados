@@ -1,0 +1,15 @@
+{
+  "name": "estudando-programacao",
+  "version": "0.0.1",
+  "description": "Estudando o livro Estrutura de Dados e Algoritmos com JavaScript",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "algoritmos"
+  ],
+  "author": "Paulo Uilian",
+  "license": "ISC"
+}
