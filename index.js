@@ -14,7 +14,7 @@ const reader = readline.createInterface({
   output: process.stdout,
 });
 
-const QTD_VALUES = 3000000;
+const QTD_VALUES = 10e6;
 for (let i = 0; i < QTD_VALUES; i++) {
   const randomValue = Math.floor(Math.random() * QTD_VALUES);
   defaultArray.push(randomValue);
@@ -67,9 +67,20 @@ const chapthers = [
       },
       {
         title: 'CountingSort',
-        fun: (array) => {
-          return CountingSort.countingSort(array);
-        },
+        subChapther: [
+          {
+            title: 'CountingSort',
+            fun: (array) => {
+              return CountingSort.countingSort(array);
+            },
+          },
+          {
+            title: 'CountingSortWithHashtable',
+            fun: (array) => {
+              return CountingSort.countingSortHash(array);
+            },
+          },
+        ],
       },
     ],
   },

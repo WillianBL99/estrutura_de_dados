@@ -22,7 +22,7 @@ export default class CountingSort {
         count--;
       }
     });
-
+    
     return array;
   }
 
@@ -34,5 +34,30 @@ export default class CountingSort {
       }
     }
     return max;
+  }
+
+  static countingSortHash(array, compareFn = Compare.defaultCompare) {
+    if (array.length < 2) {
+      return array;
+    }
+
+    const count = {};
+
+    array.forEach((element) => {
+      if (!count[element]) {
+        count[element] = 0;
+      }
+      count[element]++;
+    });
+
+    let sortedIndex = 0;
+    Object.keys(count).forEach((key) => {
+      while (count[key] > 0) {
+        array[sortedIndex++] = parseInt(key);
+        count[key]--;
+      }
+    });
+
+    return array;
   }
 }
