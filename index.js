@@ -1,5 +1,6 @@
 import readline from 'readline';
 import BubbleSort from './EDAComJs/ordenacaoEBusca/bubbleSort/bubbleSort.js';
+import CountingSort from './EDAComJs/ordenacaoEBusca/countingSort/countingSort.js';
 import InsertionSort from './EDAComJs/ordenacaoEBusca/insertionSort/insertionSort.js';
 import MergeSort from './EDAComJs/ordenacaoEBusca/mergeSort/mergeSort.js';
 import QuickSort from './EDAComJs/ordenacaoEBusca/quickSort/quickSort.js';
@@ -13,8 +14,9 @@ const reader = readline.createInterface({
   output: process.stdout,
 });
 
-for (let i = 0; i < 100000; i++) {
-  const randomValue = Math.floor(Math.random() * 1000);
+const QTD_VALUES = 3000000;
+for (let i = 0; i < QTD_VALUES; i++) {
+  const randomValue = Math.floor(Math.random() * QTD_VALUES);
   defaultArray.push(randomValue);
 }
 
@@ -63,6 +65,12 @@ const chapthers = [
           return QuickSort.quickSort(array);
         },
       },
+      {
+        title: 'CountingSort',
+        fun: (array) => {
+          return CountingSort.countingSort(array);
+        },
+      },
     ],
   },
 ];
@@ -94,7 +102,11 @@ async function handleOption(array, option) {
     console.time('toOrder');
     const orderedArray = choice.fun([...defaultArray]);
     console.timeEnd('toOrder');
-    console.log(isInOrder(orderedArray) ? 'Ordered' : "Isn't Ordered");
+    console.log(
+      isInOrder(orderedArray)
+        ? `Ordered ${orderedArray.length}`
+        : "Isn't Ordered"
+    );
     return;
   }
 
