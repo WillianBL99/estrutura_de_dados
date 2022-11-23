@@ -2,6 +2,7 @@ import readline from 'readline';
 import BubbleSort from './EDAComJs/ordenacaoEBusca/bubbleSort/bubbleSort.js';
 import InsertionSort from './EDAComJs/ordenacaoEBusca/insertionSort/insertionSort.js';
 import MergeSort from './EDAComJs/ordenacaoEBusca/mergeSort/mergeSort.js';
+import QuickSort from './EDAComJs/ordenacaoEBusca/quickSort/quickSort.js';
 import SelectionSort from './EDAComJs/ordenacaoEBusca/selectionSort/selectionSort.js';
 import { isInOrder } from './isInOrder.js';
 
@@ -23,9 +24,20 @@ const chapthers = [
     subChapther: [
       {
         title: 'BubbleSort',
-        fun: (array) => {
-          return BubbleSort.bubbleSort(array);
-        },
+        subChapther: [
+          {
+            title: 'BubbleSort',
+            fun: (array) => {
+              return BubbleSort.bubbleSort(array);
+            },
+          },
+          {
+            title: 'BestBubbleSort',
+            fun: (array) => {
+              return BubbleSort.bestBubbleSort(array);
+            },
+          },
+        ],
       },
       {
         title: 'SelectionSort',
@@ -43,6 +55,12 @@ const chapthers = [
         title: 'MergeSort',
         fun: (array) => {
           return MergeSort.mergeSort(array);
+        },
+      },
+      {
+        title: 'QuickSort',
+        fun: (array) => {
+          return QuickSort.quickSort(array);
         },
       },
     ],

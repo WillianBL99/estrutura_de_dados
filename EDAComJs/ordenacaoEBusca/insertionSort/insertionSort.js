@@ -9,7 +9,10 @@ export default class InsertionSort {
       let j = i;
       temp = array[i];
 
-      while (j > 0 && compareFn(array[j - 1], temp) === Compare.BIGGER_THAN) {
+      while (
+        j > 0 &&
+        compareFn(array[j - 1], temp) === Compare.BIGGER_OR_EQUALS_THAN
+      ) {
         array[j] = array[j - 1];
         j--;
       }

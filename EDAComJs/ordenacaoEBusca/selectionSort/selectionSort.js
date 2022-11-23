@@ -12,7 +12,10 @@ export default class SelectionSort {
       idxMinValue = i;
 
       for (let j = i; j < length; j++) {
-        if (compareFn(array[idxMinValue], array[j]) === Compare.BIGGER_THAN) {
+        if (
+          compareFn(array[idxMinValue], array[j]) ===
+          Compare.BIGGER_OR_EQUALS_THAN
+        ) {
           idxMinValue = j;
         }
       }
